@@ -40,6 +40,18 @@
       "last 1 safari version"
     ]
   },
+  "babel": {
+    "plugins": [
+      [ "@babel/plugin-proposal-decorators", { "legacy": true } ],
+      [ "@babel/plugin-proposal-class-properties", {
+        "loose": true
+      }],
+      "@babel/plugin-transform-runtime"
+    ],
+    "presets": [
+      "react-app"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-decorators": "^7.4.4",
