@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "../../node_modules/react-tabs/style/react-tabs.css";
+import "../../../node_modules/react-tabs/style/react-tabs.css";
 
 import MoviesGallery from "./MoviesViews/moviesGallery";
 import Genres from "./Genres";
