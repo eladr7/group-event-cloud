@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import ShoppingSiteHeader from './Field';
+import ShoppingSiteHeader from './Header2';
 
 storiesOf('Header Molecules', module)
   .add('Header', () => (

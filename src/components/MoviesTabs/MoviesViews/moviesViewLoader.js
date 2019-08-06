@@ -1,28 +1,15 @@
 import React from "react";
 
-import GenresContainer from "../MoviesContainers/genresContainer";
-
 import MovieView from "./movieView";
-
 import NoResults from "./NoResults";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
 const MoviesViewLoader = {
-  zeroSearchPhrase(genre) {
-    const moviesContainer = GenresContainer.getMoviesContainer(genre);
-    moviesContainer.setSearchPhrase("");
-  },
-  removeVideo(id, genre) {
-    const moviesContainer = GenresContainer.getMoviesContainer(genre);
-    moviesContainer.removeVideo(id);
-  },
-
-
-  // @private!
+  // @private
   // Gets a list of objects and returns a CSSTransitionGroup object that contains an
   // array of ObjectView objects; or a NoResults object in case the input list of
   // objects is empty.
-  getMoviesView(objects, openModalFunction, genre) {
+  getMoviesView(objects, openModalFunction, removeVideo) {
     let view;
     if (objects.length <= 0) {
       view = <NoResults />;
@@ -40,8 +27,7 @@ const MoviesViewLoader = {
               key={index}
               obj={obj}
               openModal={openModalFunction}
-              removeVideo={(id, genre) => this.removeVideo(id, genre)}
-              genre={genre}
+              removeVideo={removeVideo}
             />
           ))}
         </CSSTransitionGroup>
@@ -50,28 +36,18 @@ const MoviesViewLoader = {
     return view;
   },
 
-  // Retrieves an CSSTransitionGroup object with a list of items whith 'searchPhrase' in their
+  // Returns a CSSTransitionGroup object with a list of items whith 'searchPhrase' in their
   // 'name:' property; or a NoResults object in case the searchPhrase doesn't match any.
   // Notice that if an empty searchPhrase is supplied, all items from ObjectsContainer will be
   // returned.
-  getMoviesViewsByPhrase(genre, openModalFunction) {
-    const moviesContainer = GenresContainer.getMoviesContainer(genre);
-    const searchPhrase = moviesContainer.getSearchPhrase();
+  getFilteredMoviesView(moviesContainer, openModalFunction) {
+    const filterredMovies = moviesContainer.getFilteredMovies();
 
-    function searchingFor(searchPhrase) {
-      return function(obj) {
-        return (
-          obj.name.toLowerCase().includes(searchPhrase.toLowerCase()) ||
-          !searchPhrase
-        );
-      };
+    const removeVideo = (moviesContainer) => {
+      return (id) => moviesContainer.removeVideo(id);
     }
-    const filterredMovies = moviesContainer
-      .all()
-      .filter(searchingFor(searchPhrase));
 
-    const objectsViews = this.getMoviesView(filterredMovies, openModalFunction, genre);
-
+    const objectsViews = this.getMoviesView(filterredMovies, openModalFunction, removeVideo(moviesContainer));
     return objectsViews;
   }
 };

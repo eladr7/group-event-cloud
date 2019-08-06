@@ -1,9 +1,8 @@
 import React from 'react';
 
 import Input from '../GeneralAtoms/Input';
-
-import GenresContainer from "../MoviesTabs/MoviesContainers/genresContainer";
 import CurrTab from "../MoviesTabs/currTab";
+import "../scss/style.scss";
 
 const ShoppingSiteHeader = ({
     title = 'Find a scene',
@@ -12,11 +11,10 @@ const ShoppingSiteHeader = ({
     ...props
   }) => {
     const searchItems = event => {
-      let activeTabName = CurrTab.getTabName();
+        const genresContainer = props.genresContainer;
+        let activeTabName = CurrTab.getTabName();
 
-      GenresContainer.getMoviesContainer(activeTabName).setSearchPhrase(
-        event.target.value
-      );
+        genresContainer[activeTabName].setSearchPhrase(event.target.value);
     };
 
     return (

@@ -12,8 +12,27 @@ class MoviesGallery extends React.Component {
     super(props);
     this.state = {
       quickViewMovie: {},
-      modalActive: false
+      modalActive: false,
+      moviesContainer: this.props.moviesContainer,
+      genre: this.props.genre
     };
+  }
+
+  @action zeroSearchPhrase = () => {
+    this.state.moviesContainer.setSearchPhrase("");
+  };
+  
+  clearSearchBox = () => {
+    var list = document.getElementsByClassName("searchBox");
+    for (var item of list) {
+      item.value = "";
+    }
+
+    this.zeroSearchPhrase();
+  };
+  
+  componentDidMount() {
+    this.clearSearchBox();
   }
 
   // Open Modal
@@ -31,30 +50,14 @@ class MoviesGallery extends React.Component {
     });
   }
 
-  @action zeroSearchPhrase = () => {
-    let genreName = this.props.genre;
-    MoviesViewLoader.zeroSearchPhrase(genreName);
-  };
-  
-  clearSearchBox = () => {
-    var list = document.getElementsByClassName("searchBox");
-    for (var item of list) {
-      item.value = "";
-    }
-
-    this.zeroSearchPhrase();
-  };
-
-
   render() {
-    let genreName = this.props.genre;
-    if (genreName != CurrTab.getTabName()) {
-      this.clearSearchBox();
-      CurrTab.setTabName(genreName);
+    let genre = this.props.genre;
+    if (genre != CurrTab.getTabName()) {
+      CurrTab.setTabName(genre);
     }
 
-    let moviesView = MoviesViewLoader.getMoviesViewsByPhrase(
-      genreName,
+    let moviesView = MoviesViewLoader.getFilteredMoviesView(
+      this.state.moviesContainer,
       this.openModal.bind(this)
     );
 
