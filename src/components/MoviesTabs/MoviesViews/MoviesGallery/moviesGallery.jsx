@@ -2,9 +2,9 @@ import React from "react";
 import { observer } from "mobx-react";
 import { action } from "mobx";
 
-import MoviesViewLoader from "./moviesViewLoader";
-import QuickMovieView from "./QuickMovieView";
-import CurrTab from "../currTab";
+import MoviesViewLoader from "../../moviesViewLoader";
+import QuickMovieView from "../QuickMoviewView/QuickMovieView";
+import CurrTab from "../../currTab";
 
 @observer
 class MoviesGallery extends React.Component {

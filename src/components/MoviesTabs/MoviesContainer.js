@@ -92,11 +92,10 @@ class MoviesContainer
     const movies = this.movies;
     let i = movies.length;
     while (i--) {
-      if (
-        movies[i] &&
-        movies[i].hasOwnProperty("id") &&
-        (movies[i]["id"] === id)
-      ) {
+      if (movies[i] &&
+          movies[i].hasOwnProperty("id") &&
+          (movies[i]["id"] === id)) 
+      {
         movies.splice(i, 1);
       }
     }
@@ -122,6 +121,15 @@ class MoviesContainer
     });
 
     this.putMovieToDb(obj);
+  }
+
+  addObjectTest(obj)
+  {
+    this.movies.push({
+      id: obj.id,
+      name: obj.name,
+      image: obj.image
+    });
   }
 
   count()

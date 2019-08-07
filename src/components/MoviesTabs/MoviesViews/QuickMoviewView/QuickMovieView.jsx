@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { findDOMNode } from "react-dom";
 // import YouTube from 'react-youtube';
+import Button from '../../../GeneralAtoms/Button';
+import IframeView from './IframeView/IframeView';
+
 
 class QuickMovieView extends Component {
   constructor(props) {
@@ -35,27 +38,24 @@ class QuickMovieView extends Component {
 
   render() {
     return (
-      <div
-        className={
-          this.props.openModal ? "modal-wrapper active" : "modal-wrapper"
-        }
-      >
+      <div className={this.props.openModal ? "modal-wrapper active" : "modal-wrapper"} >
         <div className="modal" ref="modal">
-          <button
+          <Button
             type="button"
             className="close"
             onClick={this.handleClose.bind(this)}
           >
             &times;
-          </button>
-          <div className="quick-view">
-            <div className="quick-view-details">
-              <span className="object-name">{this.props.obj.name}</span>
-            </div>
-            <div className="quick-view-image">
-              <iframe src={this.props.obj.image} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-          </div>
+          </Button>
+          <IframeView
+            iframClassName="quick-view"
+            title={this.props.obj.name}
+            srcUrl={this.props.obj.image}
+            frameborder='0'
+            alowRules="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+          </IframeView>
         </div>
       </div>
     );

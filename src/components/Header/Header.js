@@ -16,7 +16,7 @@ class ShoppingSiteHeader extends React.Component {
   render() {
     return (
       <div className="header">
-        <h1>Find a scene</h1>
+        <h3>Find a scene</h3>
         <Input
           className="searchBox"
           type="search"

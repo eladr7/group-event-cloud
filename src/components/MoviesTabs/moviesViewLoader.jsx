@@ -1,7 +1,7 @@
 import React from "react";
 
-import MovieView from "./movieView";
-import NoResults from "./NoResults";
+import MovieView from "./MoviesViews/MovieView/movieView";
+import NoResults from "./MoviesViews/NoResultsView/NoResults";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
 const MoviesViewLoader = {

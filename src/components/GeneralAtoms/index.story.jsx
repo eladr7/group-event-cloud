@@ -9,6 +9,9 @@ import Button from './Button';
 import Logo from './Logo';
 import Icon from './Icon';
 import Form from './Form';
+import Span from './Span';
+import Iframe from './Iframe';
+import Img from './Img';
 
 storiesOf('Atoms', module)
   .add('Input', () => (
@@ -41,4 +44,26 @@ storiesOf('Atoms', module)
 
   .add('Icon Facebook', () => <Icon facebook />)
 
-  .add('Icon Google', () => <Icon google />);
+  .add('Icon Google', () => <Icon google />)
+
+  .add('Span', () => <Span>Movie title</Span>)
+
+  .add('Iframe', () => (
+    <Iframe
+        className="quick-view-image"
+        src="https://www.youtube.com/embed/xRnUyVUJR_E?start=76"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+    >
+    </Iframe>
+  ))
+  
+  .add('Img', () => (
+    <Img
+      src="https://res.cloudinary.com/sivadass/image/upload/v1494699523/icons/bare-tree.png"
+      alt="Empty Tree"
+    >
+    </Img>
+  ));
+  

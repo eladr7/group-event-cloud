@@ -1,28 +1,10 @@
-.modal-wrapper {
-  display: none;
-  background: rgba(0, 0, 0, 0.66);
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  height: 100%;
-  width: 100%;
-  padding-right: 0.5%;
-  overflow-y: hidden;
-  &.active {
-    display: flex;
-    display: -webkit-flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-align-items: center;
-    -webkit-justify-content: center;
-  }
   .modal {
     width: 100%;
     height: 100%;
     max-width: 98%;
     max-height: 88%;
     margin: 1%;
-    background: rgba(255, 255, 255, 0.89);
+    background: rgba(232, 234, 235, 0.89);
     border-radius: 4px;
     position: relative;
     .close {
@@ -45,10 +27,6 @@
       position: relative;
       padding: 0;
       margin-bottom: 2px;
-      // width: 100%;
-      // height: 100%;
-      // top: 0;
-      // left: 0;
     }
     iframe {
       width: 100%;
@@ -62,5 +40,4 @@
       margin-top: 3.3%;
       // z-index: -1;
     }
-  }
 }

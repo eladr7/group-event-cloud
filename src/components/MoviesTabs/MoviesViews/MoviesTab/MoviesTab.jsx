@@ -1,8 +1,8 @@
 import React from 'react';
 import { TabPanel } from "react-tabs";
 
-import Button from '../../GeneralAtoms/Button';
-import MoviesGallery from "../MoviesViews/moviesGallery";
+import Button from '../../../GeneralAtoms/Button';
+import MoviesGallery from "../MoviesGallery/moviesGallery";
 
 const MoviesTab = ({
     genre = 'Comedy',

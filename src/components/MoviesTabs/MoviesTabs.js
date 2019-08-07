@@ -3,8 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "../../../node_modules/react-tabs/style/react-tabs.css";
 
 import Button from '../GeneralAtoms/Button';
-import MoviesGallery from "./MoviesViews/moviesGallery";
-// import MoviesTab from "./MoviesTab/MoviesTab";
+import MoviesGallery from "./MoviesViews/MoviesGallery/moviesGallery";
 
 class MoviesTabs extends React.Component {
   render() {
