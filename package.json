@@ -43,6 +43,7 @@
     "mobx": "^5.13.0",
     "mobx-react": "^6.1.1",
     "mobx-react-form": "^2.0.4",
+    "mobx-task": "^1.0.3",
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.2.1",

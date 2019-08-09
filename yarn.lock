@@ -8491,6 +8491,11 @@ mobx-react@^6.1.1:
   dependencies:
     mobx-react-lite "1.4.0"
 
+mobx-task@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/mobx-task/-/mobx-task-1.0.3.tgz#409047148fff8437457f88168297c461309a72c1"
+  integrity sha512-YuaWx0sjEWIlk/t4F4yUl96EWhWo9KTRKZco48KU8WXsGbn7TmyyhtYdDCZd4ZfWB8j3yvNPqsAUJfJnlFNvHA==
+
 mobx@^5.13.0:
   version "5.13.0"
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.13.0.tgz#0fd68f10aa5ff2d146a4ed9e145b53337cfbca59"
