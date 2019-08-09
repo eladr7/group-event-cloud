@@ -4,11 +4,51 @@ import { findDOMNode } from "react-dom";
 import Button from '../../../GeneralAtoms/Button';
 import IframeView from './IframeView/IframeView';
 
-
+// const videoIdA = 'XxVg_s8xAms';
+// const videoIdB = '-DX3vJiqxm4';
 class QuickMovieView extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      videoId: null,
+      player: null,
+      opts: null,
+    };
+
+    this.onReady = this.onReady.bind(this);
+    this.onPlayVideo = this.onPlayVideo.bind(this);
+    this.onPauseVideo = this.onPauseVideo.bind(this);
   }
+  onReady(event) {
+    console.log(`YouTube Player object for videoId: "${this.state.videoId}" has been saved to state.`); // eslint-disable-line
+    if (this.state.player == null) {
+      this.setState({
+        player: event.target,
+      });
+    }
+  }
+  onPlayVideo() {
+    this.state.player.playVideo();
+  }
+  onPauseVideo() {
+    if (this.state.player) {
+      this.state.player.pauseVideo();
+    }
+
+  }
+  handleClickOutside(event) {
+    const domNode = findDOMNode(this.refs.modal);
+    if (!domNode || !domNode.contains(event.target)) {
+      this.props.closeModal();
+      this.onPauseVideo();
+    }
+  }
+  handleClose() {
+    this.props.closeModal();
+    this.onPauseVideo();
+  }
+
   componentDidMount() {
     document.addEventListener(
       "click",
@@ -25,18 +65,34 @@ class QuickMovieView extends Component {
     );
   }
 
-  handleClickOutside(event) {
-    const domNode = findDOMNode(this.refs.modal);
-    if (!domNode || !domNode.contains(event.target)) {
-      this.props.closeModal();
+  substringAfterDelimiter = (str, delimiter) => {
+    let delimiterIndex = str.lastIndexOf(delimiter);
+    let subStrAfterDelimiter = str.substring(delimiterIndex + 1);
+    return subStrAfterDelimiter;
+  }
+
+  setMovieParams = (movieObject) => {
+    let movieUrl = movieObject.image;
+
+    let movieIdWithParams = this.substringAfterDelimiter(movieUrl, '/');
+    let startTime = this.substringAfterDelimiter(movieIdWithParams, '=');
+    let movieId = movieIdWithParams.substr(0, movieIdWithParams.indexOf('?'));
+
+    if (this.state.videoId === null) {
+      this.setState({
+        videoId: movieId,
+        opts: { playerVars: { start: startTime } }
+      });
     }
   }
 
-  handleClose() {
-    this.props.closeModal();
-  }
-
   render() {
+    const movieObject = this.props.obj;
+
+    if (Object.entries(movieObject).length > 0) {
+      this.setMovieParams(movieObject);
+    }
+
     return (
       <div className={this.props.openModal ? "modal-wrapper active" : "modal-wrapper"} >
         <div className="modal" ref="modal">
@@ -49,11 +105,10 @@ class QuickMovieView extends Component {
           </Button>
           <IframeView
             iframClassName="quick-view"
-            title={this.props.obj.name}
-            srcUrl={this.props.obj.image}
-            frameborder='0'
-            alowRules="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            title={movieObject.name}
+            srcUrl={this.state.videoId}
+            opts={this.state.opts}
+            onReady={this.onReady}
           >
           </IframeView>
         </div>
@@ -63,6 +118,15 @@ class QuickMovieView extends Component {
 }
 
 export default QuickMovieView;
+{/* <IframeView
+            iframClassName="quick-view"
+            title={movieObject.name}
+            srcUrl={this.state.videoId}
+            // frameborder='0'
+            // alowRules="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            // allowfullscreen
+          >
+          </IframeView> */}
 // _onReady(event) {
 //   // access to player in all event handlers via event.target
 //   event.target.pauseVideo();
@@ -74,7 +138,7 @@ export default QuickMovieView;
 //     autoplay: 1
 //   }
 // };
-              {/* <YouTube
+{/* <YouTube
                 videoId={this.props.obj.image}
                 opts={opts}
                 onReady={this._onReady}

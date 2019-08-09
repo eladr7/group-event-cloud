@@ -11,7 +11,17 @@ import Icon from './Icon';
 import Form from './Form';
 import Span from './Span';
 import Iframe from './Iframe';
+import VideosPlayer from './VideosPlayer';
 import Img from './Img';
+
+const youtubeOpts = {
+  height: '390',
+  width: '640',
+  playerVars: { // https://developers.google.com/youtube/player_parameters
+    // autoplay: 1,
+    start: "76"
+  }
+};
 
 storiesOf('Atoms', module)
   .add('Input', () => (
@@ -57,6 +67,15 @@ storiesOf('Atoms', module)
         allowfullscreen
     >
     </Iframe>
+  ))
+
+  .add('YouTube', () => (
+    <VideosPlayer
+        className="quick-view-image"
+        videoId="xRnUyVUJR_E"
+        opts={youtubeOpts}
+    >
+    </VideosPlayer>
   ))
   
   .add('Img', () => (
