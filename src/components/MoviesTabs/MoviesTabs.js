@@ -6,6 +6,7 @@ import Button from '../GeneralAtoms/Button';
 import MoviesGallery from "./MoviesViews/MoviesGallery/moviesGallery";
 
 class MoviesTabs extends React.Component {
+  
   render() {
     const genresContainer = this.props.genresContainer;
     const genres = Object.keys(genresContainer);
@@ -19,7 +20,6 @@ class MoviesTabs extends React.Component {
 
           <TabPanel>
             <h2>Comedy videos</h2>
-            <Button title="Add video" className="add-video" onClick={() => this.addVideo(genresContainer["Comedy"])}>+</Button>
             <MoviesGallery
               genre="Comedy"
               moviesContainer={genresContainer["Comedy"]}
@@ -27,7 +27,6 @@ class MoviesTabs extends React.Component {
           </TabPanel>
           <TabPanel>
             <h2>Drama videos</h2>
-            <Button title="Add video" className="add-video" onClick={() => this.addVideo(genresContainer["Drama"])}>+</Button>
             <MoviesGallery
               genre="Drama"
               moviesContainer={genresContainer["Drama"]}
@@ -35,7 +34,6 @@ class MoviesTabs extends React.Component {
           </TabPanel>
           <TabPanel>
             <h2>Fantasy videos</h2>
-            <Button title="Add video" className="add-video" onClick={() => this.addVideo(genresContainer["Fantasy"])}>+</Button>
             <MoviesGallery
               genre="Fantasy"
               moviesContainer={genresContainer["Fantasy"]}
