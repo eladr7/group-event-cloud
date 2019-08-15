@@ -4,7 +4,22 @@ import ReactDOM from 'react-dom';
 import MainPage from './components/main-page';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<MainPage />, document.getElementById('root'));
+
+// Auth-login
+import { BrowserRouter, Route } from 'react-router-dom';
+import Login from './components/AuthLogin/Login'
+// Auth-login
+
+ReactDOM.render(
+    <BrowserRouter>
+        <div>
+            <Route exact path='/' component={MainPage} />
+            <Route exact path="/registration/login" component={Login} />
+        </div>
+    </BrowserRouter>, document.getElementById('root'));
+
+
+// ReactDOM.render(<MainPage />, document.getElementById('root'));
 // ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

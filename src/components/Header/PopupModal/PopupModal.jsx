@@ -19,7 +19,7 @@ class PopupModal extends React.Component {
 
   handleClickOutside(event) {
     const popupModalNode = findDOMNode(this.refs.popupModalPreview);
-    if (popupModalNode.classList.contains("active")) {
+    if (popupModalNode && popupModalNode.classList.contains("active")) {
       if (!popupModalNode || !popupModalNode.contains(event.target)) {
         this.setState({
           showPopupModal: false
