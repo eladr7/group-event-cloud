@@ -83,7 +83,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://group-event-backend-2020-pcjie3puzq-uc.a.run.app",
   "eslintConfig": {
     "extends": "react-app"
   },

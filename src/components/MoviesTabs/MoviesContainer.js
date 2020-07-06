@@ -14,7 +14,7 @@ class MoviesContainer
   }
 
   @task async getMoviesList() {
-    await fetch("http://localhost:3001/movies/getMovies/" + this.genre)
+    await fetch("https://group-event-backend-2020-pcjie3puzq-uc.a.run.app/movies/getMovies/" + this.genre)
       .then((data) => data.json())
       .then((res) => {
           const data = res.data;
@@ -58,7 +58,7 @@ class MoviesContainer
   // our delete method that uses our backend api
   // to delete from our data base.  TODO: implement
   deleteVideoFromDb(movieToDeleteId) {
-    axios.delete('http://localhost:3001/movies/deleteMovie/' + this.genre, {
+    axios.delete('https://group-event-backend-2020-pcjie3puzq-uc.a.run.app/movies/deleteMovie/' + this.genre, {
       data: {
         id: movieToDeleteId,
       },
@@ -83,7 +83,7 @@ class MoviesContainer
   // our put method that uses our backend api
   // to create new query into our data base
   putMovieToDb(nextId, videoName, url) {
-    axios.post('http://localhost:3001/movies/putMovie/' + this.genre, {
+    axios.post('https://group-event-backend-2020-pcjie3puzq-uc.a.run.app/movies/putMovie/' + this.genre, {
       id: nextId,
       name: videoName,
       image: url,
