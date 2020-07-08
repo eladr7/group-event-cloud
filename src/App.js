@@ -42,7 +42,7 @@ class App extends Component {
   // our first get method that uses our backend api to
   // fetch data from our data base
   getDataFromDb = () => {
-    fetch('https://group-event-backend-2020-pcjie3puzq-uc.a.run.app/api/getData')
+    fetch('https://server-ugdhobbyma-uw.a.run.app/api/getData')
       .then((data) => data.json())
       .then((res) => this.setState({ data: res.data }));
   };
@@ -56,7 +56,7 @@ class App extends Component {
       ++idToBeAdded;
     }
 
-    axios.post('https://group-event-backend-2020-pcjie3puzq-uc.a.run.app/api/putData', {
+    axios.post('https://server-ugdhobbyma-uw.a.run.app/api/putData', {
       id: idToBeAdded,
       message: message,
     });
@@ -73,7 +73,7 @@ class App extends Component {
       }
     });
 
-    axios.delete('https://group-event-backend-2020-pcjie3puzq-uc.a.run.app/api/deleteData', {
+    axios.delete('https://server-ugdhobbyma-uw.a.run.app/api/deleteData', {
       data: {
         id: objIdToDelete,
       },
@@ -91,7 +91,7 @@ class App extends Component {
       }
     });
 
-    axios.post('https://group-event-backend-2020-pcjie3puzq-uc.a.run.app/api/updateData', {
+    axios.post('https://server-ugdhobbyma-uw.a.run.app/api/updateData', {
       id: objIdToUpdate,
       update: { message: updateToApply },
     });
