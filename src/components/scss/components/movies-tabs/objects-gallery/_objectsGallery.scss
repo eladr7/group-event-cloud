@@ -1,0 +1,232 @@
+.clear-fix {
+  overflow: auto;
+}
+
+.objects {
+  display: grid;
+  // grid-template-columns: auto auto auto;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 10px;
+  padding: 10px;
+  padding-top: 98px;
+  animation: slideUp 300ms linear;
+  animation-delay: 150ms;
+  @media (max-width: 991px) {
+    padding-top: 68px;
+  }
+  @media (max-width: 480px) {
+    padding-top: 52px;
+  }
+  margin: 0 auto;
+
+  .object-name {
+    width: 100%;
+    font-weight: bold;
+    font-size: 20px;
+    overflow: hidden;
+  }
+}
+
+.object {
+  vertical-align: middle;
+  overflow: hidden;
+  margin-top: 8px;
+  min-height: 355px;
+  flex-basis: calc(25% - 32px);
+  -webkit-flex-basis: calc(25% - 32px);
+  @media (max-width: 768px) {
+    flex-basis: calc(33% - 16px);
+    -webkit-flex-basis: calc(33% - 16px);
+    margin: 8px;
+  }
+  @media (max-width: 480px) {
+    flex-basis: calc(50% - 16px);
+    -webkit-flex-basis: calc(50% - 16px);
+    min-height: 313px;
+    .object-name {
+      height: 20px;
+      overflow: hidden;
+    }
+  }
+  @media (max-width: 320px) {
+    flex-basis: 100%;
+    -webkit-flex-basis: 100%;
+  }
+
+  border: 1px solid rgb(160, 157, 157);
+  border-radius: 5px;
+  background-color: rgb(224, 224, 230);
+  color: rgb(26, 21, 21);
+
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  
+  .remove-video {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 15px;
+    line-height: 20px;
+    border-radius: 0 4px 0 0;
+    background: transparent;
+    color: $gray-medium;
+    cursor: pointer;
+    &:hover {
+      background: $gray-dark-bg;
+    }
+    z-index: 100;
+  }
+
+  .open-modal-btn {
+    position: absolute;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    iframe {
+      display: inline-block;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media (max-width: 800px) {
+  .objects {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .objects {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.fadeIn-enter {
+  opacity: 0.01;
+}
+
+.fadeIn-enter.fadeIn-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fadeIn-leave {
+  opacity: 1;
+}
+
+.fadeIn-leave.fadeIn-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.object:nth-child(1) {
+  transition-delay: 200ms;
+}
+.object:nth-child(2) {
+  transition-delay: 200ms;
+}
+.object:nth-child(3) {
+  transition-delay: 400ms;
+}
+.object:nth-child(4) {
+  transition-delay: 600ms;
+}
+.object:nth-child(5) {
+  transition-delay: 800ms;
+}
+.object:nth-child(6) {
+  transition-delay: 1000ms;
+}
+.object:nth-child(7) {
+  transition-delay: 1200ms;
+}
+.object:nth-child(8) {
+  transition-delay: 1400ms;
+}
+.object:nth-child(9) {
+  transition-delay: 1600ms;
+}
+.object:nth-child(10) {
+  transition-delay: 1800ms;
+}
+.object:nth-child(11) {
+  transition-delay: 2000ms;
+}
+.object:nth-child(12) {
+  transition-delay: 2200ms;
+}
+
+// Loading
+.object.loading {
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: contentLoader;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 1000px 104px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  .object-image {
+    height: 168px;
+    width: 168px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.25);
+    @media (max-width: 768px) {
+      width: auto;
+    }
+  }
+  .object-text,
+  .object-button {
+    margin: 12px 16px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.25);
+  }
+  .object-button {
+    position: absolute;
+    bottom: 8px;
+    width: 168px;
+    height: 36px;
+    @media (max-width: 768px) {
+      width: auto;
+    }
+  }
+}
+@keyframes contentLoader {
+  0% {
+    background-position: -420px 0;
+  }
+  100% {
+    background-position: 420px 0;
+  }
+}
+
+// Empty states
+.no-results {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto;
+  img {
+    width: 320px;
+    margin: 16px 0 32px 0;
+    opacity: 0.33;
+  }
+  h2 {
+    margin-bottom: 16px;
+    color: #666;
+  }
+  p {
+    color: #999;
+  }
+}
